@@ -1,0 +1,29 @@
+package com.example.frsgmrn;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.os.Bundle;
+
+import com.example.frsgmrn.R;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Add Fragment1
+        Fragment1 fragment1 = new Fragment1(); // Instantiate Fragment1
+        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+        transaction1.replace(R.id.fragment1_container, fragment1); // Replace fragment1_container with Fragment1
+        transaction1.commit();
+
+        // Add Fragment2
+        Fragment2 fragment2 = new Fragment2(); // Instantiate Fragment2
+        FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+        transaction2.replace(R.id.fragment2_container, fragment2); // Replace fragment2_container with Fragment2
+        transaction2.commit();
+    }
+}
