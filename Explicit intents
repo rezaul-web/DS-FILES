@@ -1,0 +1,61 @@
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button navigateButton = findViewById(R.id.navigateButton);
+
+        navigateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an explicit intent to launch SecondActivity
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                
+                // Add extra string and number data
+                String message = "Hello from MainActivity!";
+                int number = 42;
+                intent.putExtra("MESSAGE_KEY", message);
+                intent.putExtra("NUMBER_KEY", number);
+
+                // Start the SecondActivity
+                startActivity(intent);
+            }
+        });
+    }
+}import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        TextView messageTextView = findViewById(R.id.messageTextView);
+        TextView numberTextView = findViewById(R.id.numberTextView);
+
+        // Get the Intent that started this activity
+        Intent intent = getIntent();
+
+        // Retrieve the extra string and number data
+        String message = intent.getStringExtra("MESSAGE_KEY");
+        int number = intent.getIntExtra("NUMBER_KEY", 0);
+
+        // Display the string and number data in TextViews
+        messageTextView.setText(message);
+        numberTextView.setText(String.valueOf(number));
+    }
+}
