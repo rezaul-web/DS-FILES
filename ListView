@@ -1,0 +1,26 @@
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Sample data for the list
+        String[] countries = {"USA", "Canada", "Australia", "India", "Germany", "France", "Japan"};
+
+        // Create an ArrayAdapter to populate the ListView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, countries);
+
+        // Get a reference to the ListView
+        ListView listView = findViewById(R.id.listView);
+
+        // Set the adapter to the ListView
+        listView.setAdapter(adapter);
+    }
+}
