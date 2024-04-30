@@ -1,0 +1,11 @@
+void bank: : already_user()
+{
+system("cls");
+fstream file;
+string t_id;
+cout<<"\n\n\t\t\t\Already User Account";
+file.open("bank.txt", ios::in);
+if(!file)
+{
+}
+cout<<"\n\n File Opening Error...";
